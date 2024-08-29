@@ -1,5 +1,27 @@
-﻿namespace LearnC_
+﻿using System.Drawing;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+
+namespace LearnC_
 {
+    class Car
+    {
+        public string color = "red";
+        public string model;
+        string regNum = "123ABC";
+        public string RegNum
+        { get { return regNum; }
+          set { regNum = value; }
+        }
+        public Car(string modelName)
+        {
+            model = modelName;
+        }
+        public string getColor()
+        {
+            return $"My {model} is {color}";
+        }
+    }
     internal class Program
     {
         static readonly int myNum = 8;
@@ -8,8 +30,15 @@
         static public string myName = "CH Low";
         static public string myChar = "";
         static public char singleChar = 'A';
+        
         static void Main()
         {
+            Car myCar = new Car("Volkswagen Golf 1.4 TSI");
+            Console.WriteLine(myCar.color);
+            Console.WriteLine(myCar.getColor());
+            Console.WriteLine(myCar.RegNum);
+            myCar.RegNum = "456DEF";
+            Console.WriteLine(myCar.RegNum);
             Greet($"{myName} - {myNum}");
             Greet();
             myChar = $"{Console.ReadKey().Key}";
