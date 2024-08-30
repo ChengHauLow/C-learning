@@ -4,7 +4,15 @@ using System.Runtime.CompilerServices;
 
 namespace LearnC_
 {
-    class Car
+    class Vehicle
+    {
+        public string brand;
+        public Vehicle(string brandName)
+        {
+            brand = brandName;
+        }
+    }
+    class Car:Vehicle
     {
         public string color = "red";
         public string model;
@@ -13,13 +21,13 @@ namespace LearnC_
         { get { return regNum; }
           set { regNum = value; }
         }
-        public Car(string modelName)
+        public Car(string brandName, string modelName):base(brandName)
         {
             model = modelName;
         }
         public string getColor()
         {
-            return $"My {model} is {color}";
+            return $"I'm {Program.myName}, My {brand} {model} is {color}";
         }
     }
     internal class Program
@@ -33,7 +41,7 @@ namespace LearnC_
         
         static void Main()
         {
-            Car myCar = new Car("Volkswagen Golf 1.4 TSI");
+            Car myCar = new Car("Volkswagen","Golf 1.4 TSI");
             Console.WriteLine(myCar.color);
             Console.WriteLine(myCar.getColor());
             Console.WriteLine(myCar.RegNum);
